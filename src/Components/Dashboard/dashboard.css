@@ -1,0 +1,154 @@
+/* Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #007bff;
+  color: white;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li {
+  display: inline;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* General Dashboard Styling */
+.dashboard-container {
+  text-align: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  min-height: 80vh;
+}
+
+.dashboard-heading {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 30px;
+  animation: fadeInDown 1s ease;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-items: center;
+  padding: 0 10%;
+}
+
+.grid-item {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  animation: fadeInUp 1s ease;
+}
+
+.grid-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.category-icon {
+  font-size: 48px;
+  margin-bottom: 10px;
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+.grid-item:hover .category-icon {
+  color: #0056b3;
+}
+
+h2 {
+  font-size: 22px;
+  color: #333;
+}
+
+/* Colors for each category */
+.it-category {
+  background-color: #e3f2fd;
+}
+
+.math-category {
+  background-color: #ffebee;
+}
+
+.computer-category {
+  background-color: #e8f5e9;
+}
+
+.gk-category {
+  background-color: #fff3e0;
+}
+
+.science-category {
+  background-color: #f1f8e9;
+}
+
+.english-category {
+  background-color: #e8eaf6;
+}
+
+/* Footer Styling */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #007bff;
+  color: white;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer p {
+  margin: 0;
+}
+
+/* Animation keyframes */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
