@@ -1,130 +1,99 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FaLaptopCode, FaCalculator, FaDesktop, FaGlobe } from "react-icons/fa";
-import { SiEngadget } from "react-icons/si";
-import { MdScience } from "react-icons/md";
+import { SiAnimalplanet } from "react-icons/si";
+import { FaMusic } from "react-icons/fa6";
+import { MdScience, MdSportsEsports } from "react-icons/md";
 import "./dashboard.css";
 
 const Dashboard = () => {
   const navigate = useNavigate();
 
+  const categories = [
+    {
+      id: 18,
+      topic: "Information Technology",
+      icon: FaLaptopCode,
+      className: "it-category",
+    },
+    {
+      id: 19,
+      topic: "Mathematics",
+      icon: FaCalculator,
+      className: "math-category",
+    },
+    {
+      id: 18,
+      topic: "Computer Science",
+      icon: FaDesktop,
+      className: "computer-category",
+    },
+    {
+      id: 9,
+      topic: "General Knowledge",
+      icon: FaGlobe,
+      className: "gk-category",
+    },
+    {
+      id: 13,
+      topic: "Musicals & Theatres",
+      icon: FaMusic,
+      className: "music-category",
+    },
+    {
+      id: 17,
+      topic: "Science & Nature",
+      icon: MdScience,
+      className: "science-category",
+    },
+    {
+      id: 21,
+      topic: "Sports",
+      icon: MdSportsEsports,
+      className: "sports",
+    },
+    {
+      id: 27,
+      topic: "Animals",
+      icon: SiAnimalplanet,
+      className: "animals",
+    },
+  ];
+
   return (
-    <>
-      {/* Navbar */}
+    <div className="dashboard-layout">
       <nav className="navbar">
         <div className="logo">QuizApp</div>
-        <ul className="nav-links">
-          <li>
-            <a href="#home">Home</a>
-          </li>
-          <li>
-            <a href="#about">About</a>
-          </li>
-          <li>
-            <a href="#quizzes">Quizzes</a>
-          </li>
-          <li>
-            <a href="#contact">Contact</a>
-          </li>
-        </ul>
       </nav>
 
-      {/* Dashboard Content */}
-      <div className="dashboard-container">
+      <main className="dashboard-content">
         <h1 className="dashboard-heading">Select a Quiz Category</h1>
 
-        <div className="grid-container">
-          <div
-            onClick={() =>
-              navigate("/quizQuestions", {
-                state: {
-                  categoryId: 18,
-                },
-              })
-            }
-            className="grid-item it-category"
-          >
-            <FaLaptopCode className="category-icon" />
-            <h2>Information Technology</h2>
-          </div>
-
-          <div
-            className="grid-item math-category"
-            onClick={() =>
-              navigate("/quizQuestions", {
-                state: {
-                  categoryId: 19,
-                },
-              })
-            }
-          >
-            <FaCalculator className="category-icon" />
-            <h2>Mathematics</h2>
-          </div>
-
-          <div
-            className="grid-item computer-category"
-            onClick={() =>
-              navigate("/quizQuestions", {
-                state: {
-                  categoryId: 18,
-                },
-              })
-            }
-          >
-            <FaDesktop className="category-icon" />
-            <h2>Computer Science</h2>
-          </div>
-
-          <div
-            className="grid-item gk-category"
-            onClick={() =>
-              navigate("/quizQuestions", {
-                state: {
-                  categoryId: 9,
-                },
-              })
-            }
-          >
-            <FaGlobe className="category-icon" />
-            <h2>General Knowledge</h2>
-          </div>
-
-          <div
-            className="grid-item science-category"
-            onClick={() =>
-              navigate("/quizQuestions", {
-                state: {
-                  categoryId: 13,
-                },
-              })
-            }
-          >
-            <MdScience className="category-icon" />
-            <h2>Musicals & Theatres</h2>
-          </div>
-
-          <div
-            className="grid-item english-category"
-            onClick={() =>
-              navigate("/quizQuestions", {
-                state: {
-                  categoryId: 17,
-                },
-              })
-            }
-          >
-            <SiEngadget className="category-icon" />
-            <h2>Science & Nature</h2>
-          </div>
+        <div className="category-grid">
+          {categories.map((category) => (
+            <div
+              key={category.topic}
+              onClick={() =>
+                navigate("/quizQuestions", {
+                  state: {
+                    categoryId: category.id,
+                    topic: category.topic,
+                  },
+                })
+              }
+              className={`category-item ${category.className}`}
+            >
+              <category.icon className="category-icon" />
+              <h2>{category.topic}</h2>
+            </div>
+          ))}
         </div>
-      </div>
+      </main>
 
-      {/* Footer */}
       <footer className="footer">
         <p>&copy; 2024 QuizApp. All Rights Reserved.</p>
       </footer>
-    </>
+    </div>
   );
 };
 

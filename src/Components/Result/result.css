@@ -1,32 +1,118 @@
-.result-container {
-  text-align: center;
-  padding: 20px;
-  background-color: #f9f9f9;
+.certificate-page {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.certificate-container {
+  max-width: 800px;
+  width: 100%;
+}
+
+.certificate {
+  background-image: url("https://e7.pngegg.com/pngimages/269/421/png-clipart-certified-certified.png");
+  background-size: cover;
+  background-position: center;
+  aspect-ratio: 16 / 13;
+  padding: 4rem;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  color: #1a202c;
+  position: relative;
+  overflow: hidden;
 }
 
-.result-heading {
+.certificate::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 1;
+}
+
+.certificate-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+.certificate h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #2d3748;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.certificate p {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.certificate .name {
   font-size: 2rem;
-  margin-bottom: 20px;
+  font-weight: 600;
+  margin: 1rem 0;
+  color: #2b6cb0;
 }
 
-.result-score p {
-  font-size: 1.5rem;
-  margin: 10px 0;
+.certificate .course {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 1rem 0;
+  color: #2d3748;
 }
 
-.certificate-btn {
-  padding: 10px 20px;
-  font-size: 1.2rem;
-  background-color: #4caf50;
+.certificate .date {
+  font-size: 1.25rem;
+  margin-top: 1.5rem;
+  font-style: italic;
+}
+
+.download-button {
+  margin-top: 2rem;
+  background-color: #4299e1;
   color: white;
-  border: none;
-  border-radius: 5px;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  border: none;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
-.certificate-btn:hover {
-  background-color: #45a049;
+.download-button:hover {
+  background-color: #3182ce;
+  transform: translateY(-1px);
+  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  width: 100px;
+  height: auto;
+}
+
+.signature {
+  margin-top: 2rem;
+  font-family: "Brush Script MT", cursive;
+  font-size: 1.5rem;
+  color: #2d3748;
 }

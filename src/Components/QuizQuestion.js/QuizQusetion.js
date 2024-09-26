@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./quizQuestion.css";
-import Result from "../Result/Result";
 
 function QuizQuestion() {
+  const navigate = useNavigate();
   const location = useLocation();
+  const [topic, setTopic] = useState(null);
   const [category, setCategory] = useState(null);
   const [questionData, setQuestionData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
-  const [timer, setTimer] = useState(30); // 30-second timer
+  const [timer, setTimer] = useState(30);
   const [score, setScore] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (location.state && location.state.categoryId) {
       setCategory(location.state.categoryId);
+      setTopic(location.state.topic);
     } else {
       console.error("Category ID not found in location state");
     }
@@ -30,7 +32,7 @@ function QuizQuestion() {
             `https://opentdb.com/api.php?amount=20&category=${category}&type=multiple`
           );
           setQuestionData(response.data.results);
-          setIsLoading(false); // Data fetched, turn off loading
+          setIsLoading(false);
         } catch (error) {
           console.error("Error fetching the questions:", error);
         }
@@ -75,7 +77,20 @@ function QuizQuestion() {
   }
 
   if (currentIndex >= questionData.length) {
-    return <Result score={score} totalQuestions={20} />;
+    if (score >= 10) {
+      return navigate("/userResult", {
+        state: {
+          topic,
+        },
+      });
+    } else {
+      return navigate("/nicetry", {
+        state: {
+          score,
+          question: 20,
+        },
+      });
+    }
   }
 
   const currentQuestion = questionData[currentIndex];
@@ -85,6 +100,8 @@ function QuizQuestion() {
   ].sort();
 
   const progressPercentage = ((currentIndex + 1) / questionData.length) * 100;
+
+  console.error("Topic questions:", topic);
 
   return (
     <div className="quiz-container">
